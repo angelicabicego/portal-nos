@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>nós — Catálogo de fornecedores</title>
+  <link rel="icon" href="assets/imagens/icone.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="index.html">nós</a>
+    <nav><a href="index.html" aria-current="page">Catálogo</a><a href="admin.html">Painel (demo)</a></nav>
+  </header>
+  <p class="faixa">Protótipo com dados fictícios.</p>
+
+  <main class="conteudo">
+    <h1>Fornecedores</h1>
+    <input id="busca" class="busca" type="search" placeholder="Pesquisar por nome ou palavra-chave" aria-label="Pesquisar fornecedores">
+    <div id="filtros" class="filtros" role="group" aria-label="Filtrar por categoria"></div>
+    <p id="contagem" class="contagem" aria-live="polite"></p>
+    <section id="grade" class="grade"></section>
+  </main>
+
+  <script src="js/util.js"></script>
+  <script src="js/modelo.js"></script>
+  <script src="js/repositorio.js"></script>
+  <script src="js/catalogo.js"></script>
+</body>
+</html>

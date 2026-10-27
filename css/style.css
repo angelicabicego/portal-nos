@@ -1,0 +1,192 @@
+/* Estilo do catálogo e do painel. Cores em variáveis no :root. */
+:root {
+  --fundo: #f6f7f5;
+  --superficie: #ffffff;
+  --texto: #1f2a24;
+  --texto-suave: #5b6760;
+  --borda: #dde3df;
+  --destaque: #2f6b4f;
+  --destaque-claro: #e3efe8;
+  --perigo: #a33a2f;
+  --alerta: #fff4d6;
+  --raio: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+a { color: var(--destaque); }
+img { max-width: 100%; display: block; }
+
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  background: var(--superficie);
+  border-bottom: 1px solid var(--borda);
+}
+.marca { font-size: 1.5rem; font-weight: 700; text-decoration: none; }
+.topo nav { display: flex; gap: 16px; }
+.topo nav a { text-decoration: none; color: var(--texto-suave); }
+.topo nav a[aria-current="page"] { color: var(--destaque); font-weight: 600; }
+
+.faixa {
+  margin: 0;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  text-align: center;
+  background: var(--destaque-claro);
+  color: var(--texto-suave);
+}
+
+.conteudo { max-width: 1120px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { margin: 0 0 16px; font-size: 1.6rem; }
+
+/* Pesquisa e filtros */
+.busca {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 1rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+}
+.filtros { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.filtro {
+  padding: 6px 14px;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  background: var(--superficie);
+  color: var(--texto);
+  cursor: pointer;
+  font: inherit;
+}
+.filtro[aria-pressed="true"] { background: var(--destaque); border-color: var(--destaque); color: #fff; }
+.contagem { color: var(--texto-suave); font-size: 0.9rem; margin: 0 0 12px; }
+.vazio { color: var(--texto-suave); }
+
+/* Grade de cards */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  overflow: hidden;
+  color: inherit;
+  text-decoration: none;
+  transition: box-shadow 0.15s;
+}
+.card:hover, .card:focus-visible { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); }
+.card-imagem { width: 100%; aspect-ratio: 8 / 5; object-fit: cover; background: var(--destaque-claro); }
+.card-corpo { padding: 12px 14px 16px; }
+.card-corpo h2 { margin: 0; font-size: 1.05rem; }
+.cidade { margin: 2px 0 8px; color: var(--texto-suave); font-size: 0.9rem; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.tags li {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--destaque-claro);
+  color: var(--destaque);
+  font-size: 0.8rem;
+}
+
+/* Detalhes */
+.voltar { display: inline-block; margin-bottom: 16px; }
+.detalhe {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 20px;
+}
+.detalhe-imagem { width: 100%; aspect-ratio: 8 / 5; object-fit: cover; border-radius: var(--raio); }
+.detalhe-corpo h2 { font-size: 1.1rem; margin: 24px 0 8px; }
+.descricao { white-space: pre-line; }
+.contatos { margin: 0; padding: 0; list-style: none; }
+.contatos li { display: flex; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--borda); }
+.contatos span { min-width: 80px; color: var(--texto-suave); }
+.contatos a { overflow-wrap: anywhere; }
+
+/* Painel de demonstração */
+.alerta {
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  background: var(--alerta);
+  border: 1px solid #e8d28f;
+  border-radius: var(--raio);
+}
+.mensagem { min-height: 1.5em; margin: 8px 0; color: var(--destaque); }
+.mensagem.erro { color: var(--perigo); }
+.barra { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.botao {
+  padding: 8px 16px;
+  border: 1px solid var(--destaque);
+  border-radius: var(--raio);
+  background: var(--destaque);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+.botao.secundario { background: var(--superficie); color: var(--destaque); }
+.botao.perigo { background: var(--superficie); border-color: var(--perigo); color: var(--perigo); }
+
+.formulario {
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+}
+.formulario[hidden] { display: none; }
+.formulario h2 { margin: 0; }
+.formulario label { display: grid; gap: 4px; font-size: 0.9rem; }
+.formulario input, .formulario textarea, .formulario select {
+  width: 100%;
+  min-width: 0;
+  padding: 8px 10px;
+  font: inherit;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+}
+.formulario fieldset { display: grid; gap: 10px; border: 1px solid var(--borda); border-radius: 6px; }
+.linha { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
+.linha > label { flex: 1 1 220px; }
+.linha > label.curto, label.curto { flex: 0 0 120px; max-width: 160px; }
+.opcoes { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+.formulario .opcao { display: flex; gap: 6px; align-items: center; }
+.formulario .opcao input, .formulario input[type="file"] { width: auto; }
+.previa { width: 240px; aspect-ratio: 8 / 5; object-fit: cover; border-radius: 6px; }
+
+.tabela-rolagem { overflow-x: auto; }
+.tabela { width: 100%; border-collapse: collapse; background: var(--superficie); }
+.tabela th, .tabela td { padding: 10px; text-align: left; border-bottom: 1px solid var(--borda); }
+.acoes { display: flex; gap: 6px; flex-wrap: wrap; }
+.status { padding: 2px 10px; border-radius: 999px; font-size: 0.8rem; }
+.status-publicado { background: var(--destaque-claro); color: var(--destaque); }
+.status-rascunho { background: #eee; color: var(--texto-suave); }
+
+/* Celular */
+@media (max-width: 640px) {
+  .detalhe { grid-template-columns: 1fr; padding: 14px; }
+  .grade { grid-template-columns: 1fr; }
+  h1 { font-size: 1.35rem; }
+}

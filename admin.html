@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel (demonstração) — nós</title>
+  <link rel="icon" href="assets/imagens/icone.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="index.html">nós</a>
+    <nav><a href="index.html">Catálogo</a><a href="admin.html" aria-current="page">Painel (demo)</a></nav>
+  </header>
+
+  <main class="conteudo">
+    <h1>Painel administrativo — demonstração</h1>
+    <div class="alerta" role="note">
+      <strong>Não seguro, apenas para testes.</strong>
+      Não há login. As alterações ficam só no localStorage deste navegador: não mudam o
+      arquivo <code>data/fornecedores.json</code>, outras pessoas não as veem e elas somem se os
+      dados do site forem limpos. Não insira dados reais, de clientes ou confidenciais.
+    </div>
+    <p id="aviso-alteracoes" class="faixa" hidden>Este navegador tem alterações locais em relação ao JSON original.</p>
+    <div id="mensagem" class="mensagem" role="status"></div>
+
+    <div class="barra">
+      <button id="novo-fornecedor" type="button" class="botao">Novo fornecedor</button>
+      <button id="restaurar" type="button" class="botao secundario">Restaurar dados originais</button>
+    </div>
+
+    <form id="form-fornecedor" class="formulario" novalidate hidden>
+      <h2 id="titulo-formulario">Novo fornecedor</h2>
+      <input type="hidden" name="id">
+      <label>Nome* <input name="nome" required maxlength="120"></label>
+      <label>Descrição <textarea name="descricao" rows="3" maxlength="600"></textarea></label>
+      <div class="linha">
+        <label>Cidade <input name="cidade" maxlength="80"></label>
+        <label class="curto">UF <input name="uf" maxlength="2"></label>
+      </div>
+      <fieldset>
+        <legend>Categorias</legend>
+        <div id="campo-categorias" class="opcoes"></div>
+        <label>Novas categorias (separe por vírgula) <input name="novas_categorias"></label>
+      </fieldset>
+      <fieldset>
+        <legend>Imagem</legend>
+        <img id="previa-imagem" class="previa" alt="Prévia da imagem">
+        <div class="linha">
+          <input name="arquivo" type="file" accept="image/*">
+          <button id="remover-imagem" type="button" class="botao secundario">Remover imagem</button>
+        </div>
+      </fieldset>
+      <div class="linha">
+        <label>Site <input name="site" type="url" placeholder="https://"></label>
+        <label>Telefone <input name="telefone" type="tel"></label>
+      </div>
+      <div class="linha">
+        <label>E-mail <input name="email" type="email"></label>
+        <label>WhatsApp (com DDI e DDD) <input name="whatsapp" type="tel" placeholder="5511900000000"></label>
+      </div>
+      <label class="curto">Status
+        <select name="status">
+          <option value="rascunho">Rascunho</option>
+          <option value="publicado">Publicado</option>
+        </select>
+      </label>
+      <div class="barra">
+        <button type="submit" class="botao">Salvar</button>
+        <button id="cancelar" type="button" class="botao secundario">Cancelar</button>
+      </div>
+    </form>
+
+    <div class="tabela-rolagem">
+      <table class="tabela">
+        <thead><tr><th>Nome</th><th>Cidade</th><th>Status</th><th>Ações</th></tr></thead>
+        <tbody id="lista-fornecedores"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="js/util.js"></script>
+  <script src="js/modelo.js"></script>
+  <script src="js/repositorio.js"></script>
+  <script src="js/imagem.js"></script>
+  <script src="js/validacao.js"></script>
+  <script src="js/admin-formulario.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
